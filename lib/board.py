@@ -25,10 +25,7 @@ class Board:
     print(" {0} | {1} | {2} ".format(self.cells[6], self.cells[7], self.cells[8]))
 
   def full(self):
-    for token in self.cells:
-      if token == " ":
-        return False
-    return True
+    return len([cell for cell in self.cells if cell == " "]) == 0
 
   def reset(self):
     self.cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "]

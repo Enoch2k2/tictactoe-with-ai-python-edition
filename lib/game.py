@@ -65,8 +65,5 @@ class Game:
   def play(self):
     while not(self.over()):
       self.turn()
-    if not(self.won() == False):
-      print("Congratulations {0}!".format(self.winner()))
-    else:
-      print("Cat's Game!")
+    print("Congratulations {0}!".format(self.winner()) if not(self.won() == False) else "Cat's Game!")
     
