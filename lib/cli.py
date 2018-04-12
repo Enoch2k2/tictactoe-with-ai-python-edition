@@ -19,10 +19,13 @@ class Cli:
     user_input = input("How many players are going to play? 0, 1, or 2\n")
     if user_input == "0":
       Game(Computer("X"), Computer("O")).play()
+      self.ask_to_play_again()
     elif user_input == "1":
       Game(Human("X"), Computer("O")).play()
+      self.ask_to_play_again()
     elif user_input == "2":
       Game().play()
+      self.ask_to_play_again()
     elif user_input.lower() == "exit":
       print("goodbye!")
     elif user_input.lower() == "100":
@@ -44,7 +47,15 @@ class Cli:
         del game
       print("Computer X WIN RATE: {0}".format(computer_x))
       print("Computer Y WIN RATE: {0}".format(computer_y))
-      print("CATS GAMES: {0}".format(cats_game))      
+      print("CATS GAMES: {0}".format(cats_game))
+      self.ask_to_play_again()
     else:
       print("invalid choice")
       self.menu()
+
+  def ask_to_play_again(self):
+    user_input = input("Would you like to play again?(Y/N)\n")
+    if user_input.lower() == "y":
+      self.menu()
+    else:
+      print("Goodbye!")
