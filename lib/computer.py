@@ -22,10 +22,7 @@ class Computer(Player):
 
   def __init__(self, token):
     Player.__init__(self, token)
-    if token == "X":
-      self.opp_token = "O"
-    else:
-      self.opp_token = "X"
+    self.opp_token = "O" if token == "X" else "X"
 
   def move(self, board):
     if self.win(board):
@@ -81,22 +78,10 @@ class Computer(Player):
 
   def take_corner(self, board):
     corners = [0,2,6,8]
-    available = []
-    for corner in corners:
-      if not(board.position_taken(corner)):
-        available.append(corner)
-    if not(len(available) == 0):
-      return available
-    else:
-      return False
+    available = [corner for corner in corners if not(board.position_taken(corner))]
+    return available if len(available) > 0 else False
 
   def take_side(self, board):
     sides = [1, 3, 5, 7]
-    available = []
-    for side in sides:
-      if not(board.position_taken(side)):
-        available.append(side)
-    if not(len(available) == 0):
-      return available
-    else:
-      return False
+    available = [side for side in sides if not(board.position_taken(side))]
+    return available if len(available) > 0 else False

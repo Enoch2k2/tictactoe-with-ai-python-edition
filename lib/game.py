@@ -35,17 +35,10 @@ class Game:
       self.turn()
 
   def turn_count(self):
-    count = 0
-    for token in self.board.cells:
-      if token == "X" or token == "O":
-        count += 1
-    return count
+    return len([token for token in self.board.cells if token != " "])
 
   def current_player(self):
-    if self.turn_count() % 2 == 0:
-      return self.player1
-    else:
-      return self.player2
+    return self.player1 if self.turn_count() % 2 == 0 else self.player2
 
   def won(self):
     for win_combo in self.WIN_COMBINATIONS:
