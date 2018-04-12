@@ -29,3 +29,6 @@ class Board:
       if token == " ":
         return False
     return True
+
+  def reset(self):
+    self.cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
